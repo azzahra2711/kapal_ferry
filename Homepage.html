@@ -1,0 +1,139 @@
+<!-- homepage.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beranda - Pemesanan Tiket Kapal Ferry</title>
+  <link rel="stylesheet" href="css/Homepage.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="left">
+      <img src="images/new-logo.png.png" alt="Logo Ferry" class="logo">
+    </div>
+    <div class="right">
+      <span class="user">👤 User </span>
+      <span><a href="Login.html"> Logout / user@gmail.com </a></span>  
+    </div>
+  </header>
+
+  <main class="container">
+    <h2><b>Pencarian Jadwal</b></h2>
+    <div class="form-box">
+      <select name="jenis-tiket" required>
+        <option disabled selected>Pilih Jenis Tiket</option>
+        <option value="penumpang">Penumpang</option>
+        <option value="kendaraan">Kendaraan</option>
+        <option value="kamar VIP">Kamar VIP</option>
+      </select>
+
+      <select name="kota-asal" required>
+        <option disabled selected>Pilih Kota Asal</option>
+        <option value="Balikpapan (Pel.Semayang)/BPN">Balikpapan (Pel.Semayang)/BPN</option>
+        <option value="Banjarmasin (Pel. Trisakti)/BDJ">Banjarmasin (Pel. Trisakti)/BDJ</option>
+        <option value="Batulicin (Pel. Samudra)/BTW">Batulicin (Pel. Samudra)/BTW</option>
+        <option value="Baubau (Pel. Murhun)/BUW">Baubau (Pel. Murhun)/BUW</option>
+        <option value="Semarang (Pel. Tanjung Emas)/SRG">Semarang (Pel. Tanjung Emas)/SRG</option>
+      </select>
+
+      <select name="kota-tujuan" required>
+        <option disabled selected>Pilih Kota Tujuan</option>
+        <option value="Balikpapan (Pel.Semayang)/BPN">Balikpapan (Pel.Semayang)/BPN</option>
+        <option value="Banjarmasin (Pel. Trisakti)/BDJ">Banjarmasin (Pel. Trisakti)/BDJ</option>
+        <option value="Batulicin (Pel. Samudra)/BTW">Batulicin (Pel. Samudra)/BTW</option>
+        <option value="Baubau (Pel. Murhun)/BUW">Baubau (Pel. Murhun)/BUW</option>
+        <option value="Semarang (Pel. Tanjung Emas)/SRG">Semarang (Pel. Tanjung Emas)/SRG</option>
+      </select>
+
+      <label for="tanggal-berangkat">Tanggal Berangkat</label>
+      <input type="date" id="tanggal-berangkat" name="tanggal-berangkat" required onclick="this.showPicker()">
+
+      <button class="cek-btn">🔍 Cek</button>
+    </div>
+
+    <div class="jadwal-box"  id="jadwalBox">
+      <h2><b>Jadwal Keberangkatan</b></h2>
+      <table>
+        <thead>
+          <tr>
+            <th>BPN - SRG</th>
+            <th>KM. Dharma Ferry 2</th>
+            <th>Senin, 3 Maret 2025<br>04:00 WIB</th>
+            <th>Minggu, 4 Maret 2025<br>20:00 WIB</th>
+            <th>Harga Tiket</th>
+            <th>Jumlah Tiket</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td><span class="label">Tarif Khusus</span></td>
+            <td>Ekonomi</td>
+            <td>Dewasa</td>
+            <td>350.000</td>
+            <td>
+              <select>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><span class="label">Tarif Khusus</span></td>
+            <td>Ekonomi</td>
+            <td>Anak</td>
+            <td>225.000</td>
+            <td>
+              <select>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </td>
+            <td>
+  <a href="Pilihkursi.html" class="pesan-btn">Pesan</a>
+</td>
+
+          </tr>
+          <tr>
+            <td></td>
+            <td><span class="label">Tarif Khusus</span></td>
+            <td>Ekonomi</td>
+            <td>Bayi</td>
+            <td>225.000</td>
+            <td>
+              <select>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+              </select>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+<script>
+  // Sembunyikan tabel saat halaman dimuat
+  document.addEventListener('DOMContentLoaded', function () {
+    const jadwalBox = document.getElementById('jadwalBox');
+    const cekBtn = document.querySelector('.cek-btn');
+    
+    // Sembunyikan dulu
+    jadwalBox.style.display = 'none';
+
+    // Tampilkan ketika tombol diklik
+    cekBtn.addEventListener('click', function (e) {
+      e.preventDefault(); // cegah reload jika tombol dalam <form>
+      jadwalBox.style.display = 'block';
+    });
+  });
+</script>
+</html>
