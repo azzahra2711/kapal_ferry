@@ -26,7 +26,7 @@
   <main class="login-section">
     <div class="login-container">
       <img src="images/Logo.png" alt="Ferry Indonesia" />
-      <form action="#" method="post">
+      <form  id="signupForm">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required />
 
@@ -40,9 +40,9 @@
         <input type="text" id="alamat" name="alamat" required />
 
         <label for="kota/kab">Kota/Kab</label>
-        <input type="text" id="kota/kab" name="kota/kab" required />
+        <input type="text" id="kota" name="kota/kab" required />
 
-        <button href="Login.html" type="submit">Sign Up</button>
+        <button type="submit">Sign Up</button>
       </form>
       <div class="login-options">
         <a href="#">Lupa Password?</a>
@@ -54,4 +54,23 @@
   </main>
 
 </body>
+<script>
+  document.getElementById("signupForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Mencegah reload halaman
+
+    const isValid =
+      document.getElementById("username").value.trim() &&
+      document.getElementById("nik").value.trim() &&
+      document.getElementById("email").value.trim() &&
+      document.getElementById("alamat").value.trim() &&
+      document.getElementById("kota").value.trim();
+
+    if (isValid) {
+      alert("Registrasi berhasil! Silakan login.");
+      window.location.href = "Login.html";
+    } else {
+      alert("Mohon lengkapi semua kolom.");
+    }
+  });
+</script>
 </html>
