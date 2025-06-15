@@ -30,44 +30,44 @@
       <div class="grid-kursi">
         <!-- 30 kursi -->
         <!-- Gunakan JavaScript untuk dinamis, tapi ini statik -->
-        <button class="seat">1</button>
-        <button class="seat">2</button>
-        <button class="seat">3</button>
-        <button class="seat">4</button>
-        <button class="seat">5</button>
-        <button class="seat">6</button>
-        <button class="seat">7</button>
-        <button class="seat">8</button>
-        <button class="seat">9</button>
-        <button class="seat">10</button>
-        <button class="seat">11</button>
-        <button class="seat">12</button>
-        <button class="seat">13</button>
-        <button class="seat">14</button>
-        <button class="seat">15</button>
-        <button class="seat">16</button>
-        <button class="seat">17</button>
-        <button class="seat">18</button>
-        <button class="seat">19</button>
-        <button class="seat">20</button>
-        <button class="seat">21</button>
-        <button class="seat">22</button>
-        <button class="seat">23</button>
-        <button class="seat">24</button>
-        <button class="seat">25</button>
-        <button class="seat">26</button>
-        <button class="seat">27</button>
-        <button class="seat">28</button>
-        <button class="seat">29</button>
-        <button class="seat">30</button>
+        <button class="seat" data-selected="false">1</button>
+        <button class="seat" data-selected="false">2</button>
+        <button class="seat" data-selected="false">3</button>
+        <button class="seat" data-selected="false">4</button>
+        <button class="seat" data-selected="false">5</button>
+        <button class="seat" data-selected="false">6</button>
+        <button class="seat" data-selected="false">7</button>
+        <button class="seat" data-selected="false">8</button>
+        <button class="seat" data-selected="false">9</button>
+        <button class="seat" data-selected="false">10</button>
+        <button class="seat" data-selected="false">11</button>
+        <button class="seat" data-selected="false">12</button>
+        <button class="seat" data-selected="false">13</button>
+        <button class="seat" data-selected="false">14</button>
+        <button class="seat" data-selected="false">15</button>
+        <button class="seat" data-selected="false">16</button>
+        <button class="seat" data-selected="false">17</button>
+        <button class="seat" data-selected="false">18</button>
+        <button class="seat" data-selected="false">19</button>
+        <button class="seat" data-selected="false">20</button>
+        <button class="seat" data-selected="false">21</button>
+        <button class="seat" data-selected="false">22</button>
+        <button class="seat" data-selected="false">23</button>
+        <button class="seat" data-selected="false">24</button>
+        <button class="seat" data-selected="false">25</button>
+        <button class="seat" data-selected="false">26</button>
+        <button class="seat" data-selected="false">27</button>
+        <button class="seat" data-selected="false">28</button>
+        <button class="seat" data-selected="false">29</button>
+        <button class="seat" data-selected="false">30</button>
       </div>
 
       <div class="info-kursi">
         <h4>INFORMASI KURSI</h4>
         <div class="legend">
           <div><div class="seat selected"></div> Dipilih</div>
-          <div><div class="seat"></div> Tersedia</div>
-          <div><div class="seat sold"></div> Terjual</div>
+          <div><div class="seat legend-seat"></div> Tersedia</div>
+          <div><div class="seat sold legend-seat"></div> Terjual</div>
         </div>
         <p><strong>Catatan:</strong></p>
         <ul>
@@ -76,8 +76,39 @@
           <li><em style="color: blue">Jika anda terlambat maka tiket akan hangus dan tidak bisa digunakan</em></li>
         </ul>
       </div>
-      <a href="Konfirmasipembayaran.html" class="pesan-btn">Pesan</a>
+      <a href="Konfirmasipembayaran.html" class="pesan-btn" id="pesanBtn">Pesan</a>
     </div>
   </main>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const seats = document.querySelectorAll('.seat');
+    const pesanBtn = document.getElementById('pesanBtn');
+
+    // Nonaktifkan tombol pesan di awal
+    pesanBtn.style.pointerEvents = 'none';
+    pesanBtn.style.opacity = '0.5';
+
+    let selectedSeat = null;
+
+    seats.forEach(seat => {
+      seat.addEventListener('click', () => {
+        // Hapus seleksi sebelumnya
+        if (selectedSeat) {
+          selectedSeat.classList.remove('selected');
+          selectedSeat.dataset.selected = 'false';
+        }
+
+        // Tandai kursi terpilih
+        seat.classList.add('selected');
+        seat.dataset.selected = 'true';
+        selectedSeat = seat;
+
+        // Aktifkan tombol pesan
+        pesanBtn.style.pointerEvents = 'auto';
+        pesanBtn.style.opacity = '1';
+      });
+    });
+  });
+</script>
 </body>
 </html>

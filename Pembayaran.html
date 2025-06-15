@@ -23,30 +23,54 @@
       <p>Virtual Account</p>
 
       <div class="va-list">
-        <div class="va-item">
-          <span>BNI VA</span>
-          <img src="bni.png" alt="BNI">
-        </div>
-        <div class="va-item">
-          <span>BRIVA</span>
-          <img src="briva.png" alt="BRIVA">
-        </div>
-        <div class="va-item">
-          <span>MANDIRI VA</span>
-          <img src="mandiri.png" alt="Mandiri">
-        </div>
-        <div class="va-item">
-          <span>PERMATA VA</span>
-          <img src="permata.png" alt="Permata Bank">
-        </div>
-        <div class="va-item">
-          <span>BCA VA</span>
-          <img src="bca.png" alt="BCA">
-        </div>
-      </div>
+  <label class="va-item">
+    <input type="radio" name="metode" value="bni" />
+    <span>BNI VA</span>
+    <img src="images/bni.png" alt="BNI">
+  </label>
+
+  <label class="va-item">
+    <input type="radio" name="metode" value="bri va" />
+    <span>BRI VA</span>
+    <img src="images/BRI.svg" alt="BRI VA">
+  </label>
+
+  <label class="va-item">
+    <input type="radio" name="metode" value="mandiri" />
+    <span>MANDIRI VA</span>
+    <img src="images/Mandiri.webp" alt="Mandiri">
+  </label>
+
+  <label class="va-item">
+    <input type="radio" name="metode" value="bca" />
+    <span>BCA VA</span>
+    <img src="images/BCA.webp" alt="BCA">
+  </label>
+</div>
 
       <a class="btn-lanjut" href="Struk.html">Lanjutkan</a>
     </div>
   </main>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const metodeRadios = document.querySelectorAll('input[name="metode"]');
+    const lanjutBtn = document.getElementById('lanjutBtn');
+
+    metodeRadios.forEach(radio => {
+      radio.addEventListener('change', function () {
+        lanjutBtn.disabled = false;
+      });
+    });
+
+    document.getElementById('formPembayaran').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (document.querySelector('input[name="metode"]:checked')) {
+        window.location.href ='Struk.html';
+      } else {
+        alert('Silakan pilih metode pembayaran terlebih dahulu.');
+      }
+    });
+  });
+</script>
 </body>
 </html>

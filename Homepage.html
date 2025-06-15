@@ -121,17 +121,35 @@
   </main>
 </body>
 <script>
-  // Sembunyikan tabel saat halaman dimuat
   document.addEventListener('DOMContentLoaded', function () {
     const jadwalBox = document.getElementById('jadwalBox');
     const cekBtn = document.querySelector('.cek-btn');
-    
-    // Sembunyikan dulu
+
+    // Sembunyikan tabel saat awal
     jadwalBox.style.display = 'none';
 
-    // Tampilkan ketika tombol diklik
     cekBtn.addEventListener('click', function (e) {
-      e.preventDefault(); // cegah reload jika tombol dalam <form>
+      e.preventDefault();
+
+      // Ambil elemen form
+      const jenisTiket = document.querySelector('select[name="jenis-tiket"]');
+      const kotaAsal = document.querySelector('select[name="kota-asal"]');
+      const kotaTujuan = document.querySelector('select[name="kota-tujuan"]');
+      const tanggal = document.getElementById('tanggal-berangkat');
+
+      // Validasi isi
+      if (
+        jenisTiket.value === '' || jenisTiket.selectedIndex === 0 ||
+        kotaAsal.value === '' || kotaAsal.selectedIndex === 0 ||
+        kotaTujuan.value === '' || kotaTujuan.selectedIndex === 0 ||
+        tanggal.value === ''
+      ) {
+        alert('Silakan lengkapi semua data pencarian terlebih dahulu.');
+        jadwalBox.style.display = 'none';
+        return;
+      }
+
+      // Jika valid, tampilkan jadwal
       jadwalBox.style.display = 'block';
     });
   });
